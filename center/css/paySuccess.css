@@ -1,0 +1,49 @@
+.wrapper-result{
+	width:100%;
+	height:100%;
+	background:url(../images/pay_back.png);
+	background-repeat:no-repeat ;
+    background-size:100% 100%; 
+    background-attachment: fixed;
+    overflow:hidden;
+}
+.pay-success,.pay-failed{
+	height:1.16rem;
+	padding-top:1.56rem;
+	padding-left:1.29rem;
+}
+.pay-success img,.pay-failed img{
+	display:block;
+	width:1.11rem;
+	height:1.16rem;
+}
+.pay-info{
+	height:1.17rem;
+	padding-top:0.16rem;
+	text-align:center;
+}
+.pay-info-title{
+	font-size:0.17rem;
+	color:#fff;
+}
+.pay-info p{
+	margin-top:0.15rem;
+	line-height: 0.19rem;
+	color:#d7d7d9;
+	/*letter-spacing:0.01rem;*/
+	/*font-family:'Times New Roman';*/
+}
+button{
+	display:block;
+	width:3.24rem;
+	height:0.45rem;
+	background:rgb(202,29,123);
+	border:none;
+	border-radius:0.13rem;
+	margin-left:0.24rem;
+	margin-right:0.24rem;
+	margin-top:0.59rem;
+	font-size:0.17rem;
+	color:#fff;
+	outline:none;
+}

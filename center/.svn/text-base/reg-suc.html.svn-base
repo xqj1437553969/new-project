@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>结果页</title>
+<link rel="stylesheet" href="../static/layui/css/layui.css">
+<link rel="stylesheet" href="../static/css/global.css">
+<style type="text/css">
+body {
+	color: #fff;
+}
+
+.bottom-btn {
+	margin-top: 10rem;
+}
+
+.head {
+	padding-top: 40%;
+}
+
+.pink-circle {
+	margin: 0 auto;
+	width: 6rem;
+	height: 6rem;
+	border-radius: 100%;
+	background-color: #ca1d7b;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pink-circle img {
+	width: 40%;
+}
+
+.suc-sub {
+	text-align: center;
+	font-family: 微软雅黑;
+	font-size: 1rem;
+	margin-top: 1.5rem;
+}
+
+.suc-detail {
+	margin-top: 2rem;
+	text-align: center;
+	font-size: .7rem;
+	font-family: "Adobe 黑体 Std";
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<img class="bg-img" src="../static/img/card-record-back.jpg">
+		<div class="head">
+			<div class="pink-circle">
+				<img src="../static/img/gou.jpg">
+			</div>
+			<p class="suc-sub">注册成功</p>
+			<p class="suc-detail">恭喜您，注册成功</p>
+		</div>
+		<div class="bottom-btn">
+			<a href="javascript:;">登录</a>
+		</div>
+	</div>
+
+	<!-- 你的HTML代码 -->
+	<script src="../static/js/rem.js"></script>
+	<script src="../static/layui/layui.js"></script>
+	<script>
+		layui.use([ 'layer' ], function() {
+			var $ = layui.jquery;
+			$('.bottom-btn').click(function() {
+				location.href = 'login.html'
+			})
+		})
+	</script>
+</body>
+</html>

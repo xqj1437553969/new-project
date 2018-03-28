@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>激活</title>
+		<link rel="stylesheet" type="text/css" href="css/lib/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/lib/weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/activation.css"/>
+	</head>
+	<body>
+		<div class="wrapper-activation page picker js_show">
+			<div class="card-img"><img src="images/cardy_03.png" alt="" /></div>
+			<div class="weui-cells__title country_title">选择国家</div>
+		    <div class="weui-cells">
+	            <div class="weui-cell weui-cell_select conuntry_select">
+	                <div class="weui-cell__bd">
+	                    <select class="weui-select" name="select1">
+	                        <option selected="" value="1">英国</option>
+	                        <option value="2">美国</option>
+	                    </select>
+	                </div>
+	            </div>
+           </div>
+           <div class="card">
+           	   <button class="scan-btn btn">扫描获取SIM card number</button>
+           	   <button class="inp-btn btn">手动输入</button>
+           </div>
+		   <div class="weui-cells__title" id="code-title">唯一码</div>
+		   <div class="weui-cells" id="code-wrapper">
+	            <div class="weui-cell" id="code-box">
+	                <div class="weui-cell__bd">
+	                    <input class="weui-input" type="text" placeholder="扫描获取SIM card number">
+	                </div>
+	            </div>
+           </div>
+           <div class="weui-cells__title">激活日期</div>
+		   <div class="weui-cells">
+	            <div class="weui-cell" >
+	                <div class="weui-cell__bd">
+	                   <a href="javascript:;" class="weui-btn weui-btn_default" id="showDatePicker">日期选择器</a>
+	                </div>
+	            </div>
+           </div>
+		</div>
+		<script src="js/lib/resetRem.js"></script>
+		<script src="js/lib/zpeto.js"></script>
+		<script src="js/lib/jweixin-1.1.0.js"></script>
+		<script src="js/lib/weui.min.js"></script>
+	</body>
+</html>

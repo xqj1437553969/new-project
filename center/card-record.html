@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>领卡记录</title>
+<link rel="stylesheet" href="../static/layui/css/layui.css">
+<link rel="stylesheet" href="../static/css/global.css">
+<style type="text/css">
+body {
+	color: #000;
+}
+
+.bottom-btn {
+	margin: 1rem auto;
+}
+
+.lk {
+	margin: 0 0 1rem 1rem;
+	padding-top: 2rem;
+	color: #fff;
+}
+
+.card {
+	width: 100%;
+	height: 7rem;
+	background-color: #e4e2e5;
+	position: relative;
+}
+
+.card-content {
+	position: absolute;
+	margin: .5rem 0 0 1rem;
+}
+
+.card-content p {
+	line-height: 1.7;
+}
+
+.card-status {
+	margin-bottom: 1rem;
+	width: 100%;
+	height: 3rem;
+	background-color: #e4e2e5;
+}
+
+.status-detail {
+	width: 90%;
+	height: 3rem;
+	margin: 0 auto;
+	display: flex;
+	display: -webkit-flex; /* Safari */
+	align-items: center;
+	justify-content: space-between;
+}
+
+.container {
+	background-image: url("../static/img/card-record-back.jpg");
+	background-repeat: repeat-y;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<!--<img class="bg-img" src="../static/img/card-record-back.jpg">-->
+		<div class="lk">领卡记录</div>
+		<div class="card-all"></div>
+	</div>
+
+	<!-- 你的HTML代码 -->
+	<script src="../static/js/rem.js"></script>
+	<script src="../static/layui/layui.js"></script>
+	<script>
+		layui.config({
+			version : "1"
+		}).extend({
+			'fly' : '../static/layui/lay/modules/fly/cool'
+		});
+		layui.use([ 'layer', 'form', 'fly' ], function() {
+			var layer = layui.layer, form = layui.form, fly = layui.fly, $ = layui.jquery;
+
+			var student = localStorage.getItem("student")
+			if (student) {
+				student = JSON.parse(student)
+				var data = {
+					studentId : student.studentId
+				}
+				fly.json('../center/orderRecord', data, function(res) {
+					var record = res.data.record;
+					var html = ''
+					if (record && record.length > 0) {
+						$.each(record, function(i, obj) {
+							//                        $('#recordId').val(obj.orderId)
+							var date = new Date(obj.createTime)
+							var monthStr = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+							var miniteStr = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+							var secondStr = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+							var dateStr = date.getFullYear() + '-' + monthStr + '-' + date.getDate() + ' ' + date.getHours() + ':' + miniteStr + ':' + secondStr
+							var orderStatus = obj.orderStatus
+							html += '<div class="card">' + '<div class="card-content">' + '<p>' + dateStr + '</p>' + '<p>' + obj.orderAddress + '</p>' + '</div>' + '</div>'
+									+ '<div class="card-status">' + '<div class="status-detail">' + '<span>订单状态</span>' + '<span class="order-status">' + orderStatus + '</span>' + '</div>' + '</div>'
+							if ('未处理' == orderStatus) {
+								html += ' <div class="bottom-btn" data-id="'+obj.orderId+'">' + '<a href="javascript:;">取消</a>' + '</div>'
+							}
+						})
+						$('.card-all').html(html)
+						$('.bottom-btn').on("touchstart", function() {
+							$(this).css("background-color", '#a23872')
+						})
+						$('.bottom-btn').on("touchend", function() {
+							$(this).css("background-color", '#ca1d7b')
+							var r = confirm('取消领卡记录后，将不会收到卡，确定取消吗？')
+							var data = {
+								recordId : $(this).data('id')
+							}
+							if (r) {
+								fly.json('../center/cancelFreeCard', data, function(res) {
+									layer.msg('取消成功')
+									setTimeout(function() {
+										location.reload()
+									}, 500)
+								})
+							}
+						})
+					} else {
+						$('.card-status').addClass('layui-hide')
+						$('.bottom-btn').addClass('layui-hide')
+						html = '<div class="card-content"><p>暂无领卡记录</p></div>'
+						$('.card-all').html(html)
+					}
+				})
+			} else {
+				$('.card-status').addClass('layui-hide')
+				$('.bottom-btn').addClass('layui-hide')
+				$('.card-content').html('<p>未获取到学生信息</p>')
+			}
+
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+ .wrapper-activate{
+	width:100%;
+	height:100%;
+	background:url(../images/active_back.png);
+	background-repeat:no-repeat ;
+    background-size:100% 100%; 
+    background-attachment: fixed;
+}
+.activate-detail{
+	width:3.3rem;
+	height:4.41rem;
+	padding-left:0.225rem;
+	padding-right:0.225rem;
+	background-color:#e2e2e5;
+}
+.activate-info>li{
+	height:0.49rem;
+}
+.info-left{
+	float:left;
+}
+.info-right{
+	float:right;
+}
+.info-left,.info-right{
+	display:inline-block;
+	line-height:0.49rem;
+}
+/*.btn-wrapper{
+	height:1.615rem;
+	overflow:hidden;
+}*/
+button.modification-btn{
+	display:block;
+	width:3.24rem;
+	height:0.45rem;
+	background-color:rgb(202,29,123);
+	border:none;
+	outline:none;
+	margin-left:0.24rem;
+	margin-top:0.58rem;
+	border-radius:0.13rem;
+	font-size:0.17rem;
+	color:#fff;
+}
+/*修改weiui弹出层样式*/
+#reset-weui-diglog{
+	font-size:0.14rem;
+}
+.reset-weui-dialog__hd{
+	line-height:0.52rem;
+	position:relative;
+}
+.reset-weui-dialog__hd i{
+	line-height:0;
+	position:absolute;
+	top:28%;
+	right:5%;
+}
+.reset-weui-dialog__hd i>img{
+	width:0.125rem;
+	height:0.125rem;
+}
+.add-weui-dialog__hd{
+    line-height:0.14rem;
+	padding-left:0.24rem;
+	text-align:left;
+}
+.reset-weui-dialog__bd{
+	margin-top:0.16rem;
+	line-height:0.46rem;
+	border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	padding-left:0.24rem;
+    text-align:left;
+    color:#a3a3a3;
+}
+.reset-weui-dialog__ft{
+	line-height:0.56rem;
+}
+.reset-weui-dialog__btn{
+	display:inline-block;
+	width:60%;
+	line-height:0.39rem;
+	background:#ca1d7b;
+	color:#fff;
+	border-radius:0.05rem;
+}
