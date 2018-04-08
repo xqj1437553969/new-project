@@ -1,7 +1,7 @@
 .wrapper-result{
 	width:100%;
 	height:100%;
-	background:url(../images/pay_back.png);
+	background:url(../images/pay_back_01.jpg);
 	background-repeat:no-repeat ;
     background-size:100% 100%; 
     background-attachment: fixed;
@@ -33,10 +33,12 @@
 	/*letter-spacing:0.01rem;*/
 	/*font-family:'Times New Roman';*/
 }
-button{
+#avtivate,#buy-record{
 	display:block;
 	width:3.24rem;
 	height:0.45rem;
+	text-align:center;
+    line-height:0.45rem;
 	background:rgb(202,29,123);
 	border:none;
 	border-radius:0.13rem;
@@ -46,4 +48,5 @@ button{
 	font-size:0.17rem;
 	color:#fff;
 	outline:none;
+	
 }

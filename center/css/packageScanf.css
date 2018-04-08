@@ -1,18 +1,30 @@
-body{
-  line-height:0.24rem;
-}
+
 #bodysection {
 	height:100%;
-	/*display: none;*/
+	display: none;
 	background:url(../images/active_back_02.jpg);
 	background-repeat:no-repeat ;
     background-size:100% 100%; 
     background-attachment: fixed;
+    line-height:0.24rem;
     font-size:0.15rem;
 }
 .weui-cell:before {
-	left:0;
+	left: 0px;
 }
+#cilckbut {
+	display:block;
+	width: 90%;
+	margin-top:15%;
+	margin-left:5%;
+	text-align:center;
+	line-height:0.46rem;
+	font-size:0.16rem;
+	color:#fff;
+	background:#ca1d7b;
+	border-radius:0.05rem;
+}
+
 #act_order {
 	width: 90%;
 	margin-left: 5%;
@@ -32,14 +44,9 @@ body{
 }
 
 .weui-cells {
-	margin-top:0;
+	margin-top: 0px;
 }
-#country_name{
-	height:0.44rem;
-    line-height:0.44rem;
-    padding-right:0.3rem;
-    padding-left:0.15rem;
-}
+
 .numberleft {
 	width: 75%;
 	float: left;
@@ -70,40 +77,26 @@ body{
 	margin-left: 45%;
 	margin-top: 1rem;
 }
-button{
-	display:block;
-	width: 90%;
-	margin-top:3%;
-	margin-left:5%;
-	text-align:center;
-	line-height:0.46rem;
-	font-size:0.16rem;
-	color:#fff;
-	background:#ca1d7b;
-	border-radius:0.05rem;
-	border:none;
-}
+
 /*重置weui部分样式*/
+/*.weui-cell{
+	padding:0.10rem 0.15rem;
+}*/
 .reset-weui-chose{
     color:#fff;	
 }
 .reset-weui-cells>.weui-cell_select{
 	background:#fff;
 }
-#scanf-btn-wrapper{
-	padding:0.14rem 0.15rem 0;
-}
-#card>.reset-weui-cell{
-	padding:0.07rem 0.15rem;
-}
 #card>.weui-cell:first-child{
 	color:#fff;
 }
 #card>.weui-cell:nth-child(2){
 	background:#fff;
-	padding:0.1rem 0.15rem;
 }
-
+#scanf-btn-wrapper{
+	padding-top:0.33rem;
+}
 
 /*修改weiui弹出层样式*/
 #reset-weui-diglog{
@@ -152,15 +145,3 @@ button{
 .weui-dialog__btn:after{
     border-color:#000;
 }
-
-.weui-picker__item{
-	  padding: 0;
-    height: 34px;
-    line-height: 34px;
-    text-align: center;
-    color: #000000;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-

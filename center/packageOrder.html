@@ -4,17 +4,16 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>选择套餐</title>
-		<link rel="stylesheet" href="css/lib/reset.css">
+		<script src="../static/js/lib/resetRem.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
 	    <link rel="stylesheet" type="text/css" href="css/packageOrder.css"/>	
 	</head>
 	<body>
 		<div class="wrapper-packageorder">
 			<div class="order-package">
-				<div class="order-img"><img class="img" src="images/packagey_02.png" alt="" /></div>
+				<div class="order-img"><!--<img class="img" src="images/packagey_02.png" alt="" />--></div>
 				<div class="order-info">
-					<p><span>2GB</span><span>4G流量</span></p>
-					<p>500分钟英国短信</p>
-					<p>无线英国短信</p>
+					<p></p>
 				</div>
 			</div>
 			<div class="order-month">
@@ -38,11 +37,12 @@
 				</div>
 			</div>
 			<div class="buy-info">
-				<p>总计:$40*<span>一个月</span>=$40.0</p>
-				<p>$40.0=280.0CNY</p>
+				<p class="buy-total"><!--总计:$40*1个月=$40.0--></p>
+				<p class="buy-rmb"><!--$40.0=280.0CNY--></p>
 			</div>
 			<button class="btn-buy">立即购买</button>
 		</div>
-		<script src="js/lib/resetRem.js"></script>
+		<script type="text/javascript" src="../static/js/lib/zpeto.js"></script>
+		<script src="js/packageOrder.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

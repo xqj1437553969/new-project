@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-<title>修改激活</title>
+<title>预约激活</title>
 <link rel="stylesheet" href="../resources/weui-1.0.2/dist/style/weui.css">
 
 <script type="text/javascript" src="../resources/assets/js/jquery-2.0.3.min.js"></script>
@@ -83,57 +83,8 @@ body {
 	display: none;
 }
 </style>
-</head>
-<body ontouchstart>
-<!--	<img src="../resources/images/load.gif" id="picturesty">-->
-	<div id="bodysection">
-		<div id="pic"></div>
-		<div class="weui-cells">
-			<div class="weui-cell" style="background: RGB(245, 245, 245);">国家</div>
 
-			<div class="weui-cell weui-cell_select">
-				<div class="weui-cell__bd">
-					<select class="weui-select" id="country_name" onchange="initCountry()">
-					</select>
-				</div>
-			</div>
-
-			<div class="weui-cell" style="background: RGB(245, 245, 245)">
-				<div id="scanQRCode" class="numberleft"></div>
-				<div class="numberright" onclick="hand_input()">手动输入</div>
-			</div>
-
-			<div id="card" class="weui-cells" style="background: RGB(245, 245, 245);"></div>
-
-			<div class="weui-cell" style="background: RGB(245, 245, 245);">开卡日期</div>
-
-			<div class="weui-cell">
-				<div class="weui-cell__bd">
-					<input id="in" class="weui-input" type="text" readonly="readonly" onclick="sertime()" unselectable="on" onfocus="this.blur()">
-				</div>
-			</div>
-		</div>
-		<a class="weui-btn weui-btn_warn" id="cilckbut" onclick="submit_inf()">提交激活信息</a> <a class="weui-btn weui-btn_warn" id="act_order" onclick="check_record()">查看激活记录</a>
-	</div>
-	<div class="js_dialog" id="dialog" style="display: none;">
-		<div class="weui-mask"></div>
-		<div class="weui-dialog">
-			<div class="weui-dialog__hd">
-				<strong class="weui-dialog__title">手动输入</strong>
-			</div>
-			<div class="weui-cells weui-cells_form">
-				<div class="weui-cell">
-					<div class="weui-cell__bd">
-						<input class="weui-input" type="text" id="code">
-					</div>
-				</div>
-			</div>
-			<div class="weui-dialog__ft">
-				<a class="weui-dialog__btn weui-dialog__btn_default" onclick="cancel()">取消</a> <a class="weui-dialog__btn weui-dialog__btn_primary" onclick="submit()">确定</a>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
+<script type="text/javascript">
 	function getQueryString(str) {
 		var reg = new RegExp("(^|&)" + str + "=([^&]*)(&|$)", "i");
 		var r = window.location.search.substr(1).match(reg);
@@ -153,6 +104,7 @@ body {
 	}, function(res) {
 		if (res.success) {
 			openId = res.data.openId;
+//			localStorage.setItem("openId",openId);
 			for (var i = 0; i < res.data.countryList.length; i++) {
 				var country = res.data.countryList[i];
 				var str = "<option value='" + country.countryId 
@@ -173,7 +125,7 @@ body {
 			var jssdk = res.data.jssdk;
 			var dataObj = eval(jssdk);
 			var options = {
-				debug : false,
+				debug :true,
 				jsApiList : [ "scanQRCode" ]
 			};
 			$.extend(options, dataObj);
@@ -236,7 +188,7 @@ body {
 		$("#card").append("<div class='weui-cell'><div class='weui-cell__bd'><input class='weui-input' disabled='disabled' type='text' id='cardNo' placeholder='请输入" + cardNoName + "'></div></div>");
 		$("#scanQRCode").html("扫码获取" + cardNoName);
 		$("#code").attr("placeholder", "手动输入获取" + cardNoName);
-		$("#in").attr("placeholder", "请选择激活日期（" + activateDatePrompt + "）");
+		$("#in").attr("placeholder", "请选择开卡日期（" + activateDatePrompt + "）");
 	}
 
 	function validateCodeLength(country, code) {
@@ -326,7 +278,7 @@ body {
 			return;
 		}
 		weui.loading('loading');
-		$.post("../center/saveActivation", {
+		$.post("../wx/saveActivation", {
 			openId : openId,
 			countryId : countryId,
 			cardNo : cardNo,
@@ -348,5 +300,55 @@ body {
 		window.location.href = "activationRecord.html?openId=" + openId + "&businessId=" + businessId;
 	}
 </script>
+</head>
+<body ontouchstart>
+	<img src="../resources/images/load.gif" id="picturesty">
+	<div id="bodysection">
+		<div id="pic"></div>
+		<div class="weui-cells">
+			<div class="weui-cell" style="background: RGB(245, 245, 245);">国家</div>
+
+			<div class="weui-cell weui-cell_select">
+				<div class="weui-cell__bd">
+					<select class="weui-select" id="country_name" onchange="initCountry()">
+					</select>
+				</div>
+			</div>
+
+			<div class="weui-cell" style="background: RGB(245, 245, 245)">
+				<div id="scanQRCode" class="numberleft"></div>
+				<div class="numberright" onclick="hand_input()">手动输入</div>
+			</div>
+
+			<div id="card" class="weui-cells" style="background: RGB(245, 245, 245);"></div>
+
+			<div class="weui-cell" style="background: RGB(245, 245, 245);">开卡日期</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__bd">
+					<input id="in" class="weui-input" type="text" readonly="readonly" onclick="sertime()" unselectable="on" onfocus="this.blur()">
+				</div>
+			</div>
+		</div>
+		<a class="weui-btn weui-btn_warn" id="cilckbut" onclick="submit_inf()">提交激活信息</a> <a class="weui-btn weui-btn_warn" id="act_order" onclick="check_record()">查看激活记录</a>
+	</div>
+	<div class="js_dialog" id="dialog" style="display: none;">
+		<div class="weui-mask"></div>
+		<div class="weui-dialog">
+			<div class="weui-dialog__hd">
+				<strong class="weui-dialog__title">手动输入</strong>
+			</div>
+			<div class="weui-cells weui-cells_form">
+				<div class="weui-cell">
+					<div class="weui-cell__bd">
+						<input class="weui-input" type="text" id="code">
+					</div>
+				</div>
+			</div>
+			<div class="weui-dialog__ft">
+				<a class="weui-dialog__btn weui-dialog__btn_default" onclick="cancel()">取消</a> <a class="weui-dialog__btn weui-dialog__btn_primary" onclick="submit()">确定</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

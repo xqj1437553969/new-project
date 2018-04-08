@@ -42,7 +42,7 @@ p span{
 	height:1.35rem;
 }
 .order-month{
-	line-height:0.46rem;
+	line-height:0.45rem;
 	font-size:0.15rem;
 	overflow:hidden;
 }
@@ -56,10 +56,23 @@ p span{
 	float:left;
 	position:relative;
 }
-.month select{
+.month>select{
 	width:2.07rem;
 	height:0.45rem;
-	font-size:0.15rem;             
+	font-size:0.15rem;
+	background-color:transparent;;
+	position:relative;
+	z-index:1;           
+}
+.month:before{
+	content:"";
+	display:block;
+	width:1.63rem;
+	height:0.45rem;
+	background:#fff;
+	position:absolute;
+	left:0;
+	top:0;
 }
 .month:after{
 	content:"";

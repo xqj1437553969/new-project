@@ -101,7 +101,7 @@ p {
 	    if(str.indexOf("type")!=-1){//如果有type字段将type字段存入localStorage
 	    	var type = str.split("type=")[1];
 	    	console.log(type);
-	    	localStorage.setItem("type",type);
+	    	sessionStorage.setItem("type",type);
 	    }else{
 	    	
 	    }

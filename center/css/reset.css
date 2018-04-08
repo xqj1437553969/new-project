@@ -13,13 +13,13 @@ body{
 a{
 	text-decoration:none;
 }
-input,select{
+input,select,button{
 	outline:none;
 }
 ol, ul {
     list-style: none;
 }
-input, select,textarea {
+input,select,textarea {
     border: 0;
     -webkit-appearance: none;
     appearance:none;

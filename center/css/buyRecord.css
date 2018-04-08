@@ -31,15 +31,9 @@
 .activate-info:last-child{
 	margin-bottom:0;
 }
-.revise{
-	border-top:1px solid #000;
-	text-align:center;
-	line-height:0.47rem;
-	color:#ca1d7b;
-}
 .position-icon{
 	position: absolute;
-	top:44%;
-	right:1%;
+	top:43%;
+	right:3%;
 	font-size:0.2rem;
 }

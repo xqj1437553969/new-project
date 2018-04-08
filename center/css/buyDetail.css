@@ -1,19 +1,18 @@
-.wrapper-activate{
+.wrapper-buy-detail{
 	width:100%;
 	height:100%;
-	background:url(../images/active_back.png);
+	background:url(../images/active_back_02.jpg);
 	background-repeat:no-repeat ;
     background-size:100% 100%; 
     background-attachment: fixed;
 }
-.activate-detail{
+.buy-detail{
 	width:3.3rem;
-	height:4.41rem;
 	padding-left:0.225rem;
 	padding-right:0.225rem;
 	background-color:#e2e2e5;
 }
-.activate-info>li{
+.buy-info>li{
 	height:0.49rem;
 }
 .info-left{
