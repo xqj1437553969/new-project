@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 // 引入插件
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 // 清理 dist 文件夹
@@ -17,8 +18,8 @@ let Entries = {}
 config.HTMLDirs.forEach((page) => {
     const htmlPlugin = new HTMLWebpackPlugin({
         filename: `${page}.html`,
-        template: path.resolve(__dirname, `../src/html/${page}.html`),
-        chunks: [page, 'commons'],
+        template: path.resolve(__dirname, `../src/${page}.html`),
+        chunks:[page,'vendor']
     });
     HTMLPlugins.push(htmlPlugin);
     Entries[page] = path.resolve(__dirname, `../src/js/${page}.js`);
@@ -28,12 +29,16 @@ module.exports = {
     entry:Entries,
 //  devtool:"cheap-module-source-map",
     output:{
-        filename:"js/[name].bundle.[chunkhash].js",
+        filename:"js/[name].[chunkhash].js",
         path:path.resolve(__dirname,"../dist")
     },
     // 加载器
     module:{
         rules:[
+            {
+		       test:/\.html$/,
+			   loader:'html-loader'
+            },
             {
                 // 对 css 后缀名进行处理
                 test:/\.css$/,
@@ -68,13 +73,14 @@ module.exports = {
                 }
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test:/\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 use:{
-                    loader:"file-loader",
+                    loader:"url-loader",
                     options:{
+                    	limit: 10000,
                         // 打包生成图片的名字
-                        name:"[name].[ext]",
-                        // 图片的生成路径
+                        name:"[name].[hash:7].[ext]",
+//                      // 图片的生成路径
                         outputPath:config.imgOutputPath
                     }
                 }
@@ -99,10 +105,17 @@ module.exports = {
         // 将 css 抽取到某个文件夹
 //      new ExtractTextPlugin(config.cssOutputPath),
  		new ExtractTextPlugin({
-            filename: 'css/[name].css',
+            filename: 'css/[name].[chunkhash].css',
             allChunks: true
      	}), 
         // 自动生成 HTML 插件
-        ...HTMLPlugins
-    ],
+        ...HTMLPlugins,
+        new CopyWebpackPlugin([//复制插件
+			   {
+			        from: path.resolve(__dirname, '../static'),
+			        to:'static',
+			        ignore: ['.*']//忽略.*的文件
+			   }
+    	])
+    ]
 }

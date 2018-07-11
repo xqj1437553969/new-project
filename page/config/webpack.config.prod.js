@@ -16,7 +16,7 @@ module.exports = webpackMerge(webpackBase,{
         new webpack.optimize.CommonsChunkPlugin({
             // chunk 名为 vendor
             name: "vendor",
-            filename: "[name].bundle.js",
-        }),
+            filename: "js/[name].[chunkhash].js",
+        })
     ]
 });

@@ -1,4 +1,3 @@
-import '../lib/css/reset.css';
 import '../css/index.css';
 import Vue from 'vue/dist/vue.min.js'
 var vm = new Vue({
